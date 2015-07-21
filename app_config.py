@@ -149,7 +149,7 @@ authomatic_config = {
 
 authomatic = Authomatic(authomatic_config, os.environ.get('AUTHOMATIC_SALT'))
 
-DEFAULT_IMAGE = 'assets/test-kitten.jpg'
+DEFAULT_IMAGE = 'assets/test.jpg'
 
 """
 Utilities

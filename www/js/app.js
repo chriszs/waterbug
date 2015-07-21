@@ -12,7 +12,7 @@ var $imageLinkButton;
 var $canvas;
 var canvas;
 var $qualityQuestions;
-var $copyrightHolder;
+// var $copyrightHolder;
 var $dragHelp;
 var $filename;
 var $fileinput;
@@ -30,24 +30,24 @@ var previewScale = IS_MOBILE ? 0.32 : 0.64;
 var dy = 0;
 var dx = 0;
 var logoDimensions = {
-    'npr': {
-        w: 150,
-        h: 51
+    'cpi': {
+        w: 60,
+        h: 60
     },
-    'music': {
-        w: 306,
-        h: 81
+    'icij': {
+        w: 60,
+        h: 60
     }
 };
 var elementPadding = 40;
 var image;
 var imageFilename = 'image';
 var currentCrop = 'twitter';
-var currentLogo = 'npr';
+var currentLogo = 'cpi';
 var currentLogoColor = 'white';
 var currentTextColor = 'white';
 var currentCopyright;
-var credit = 'Belal Khan/Flickr'
+var credit = 'Evan Bush/Center for Public Integrity'
 var shallowImage = false;
 
 
@@ -72,7 +72,7 @@ var onDocumentLoad = function(e) {
     $crop = $('input[name="crop"]');
     $logoColor = $('input[name="logoColor"]');
     $qualityQuestions = $('.quality-question');
-    $copyrightHolder = $('.copyright-holder');
+    // $copyrightHolder = $('.copyright-holder');
     $dragHelp = $('.drag-help');
     $filename = $('.fileinput-filename');
     $fileinput = $('.fileinput');
@@ -83,7 +83,7 @@ var onDocumentLoad = function(e) {
     logo.src = 'assets/logo-' + currentLogo + '-' + currentLogoColor + '.png';
     logo.onload = renderCanvas;
 
-    $photographer.on('keyup', renderCanvas);
+    $photographer.on('keyup', onCreditChanged);
     $source.on('keyup', renderCanvas);
     $imageLoader.on('change', handleImage);
     $imageLinkButton.on('click', handleImageLink);
@@ -93,7 +93,7 @@ var onDocumentLoad = function(e) {
     $logoColor.on('change', onLogoColorChange);
     $crop.on('change', onCropChange);
     $canvas.on('mousedown touchstart', onDrag);
-    $copyrightHolder.on('change', onCopyrightChange);
+    // $copyrightHolder.on('change', onCopyrightChange);
     $customFilename.on('click', function(e) {
         e.stopPropagation();
     })
@@ -185,7 +185,7 @@ var renderCanvas = function() {
     ctx.drawImage(
         logo,
         elementPadding,
-        currentLogo === 'npr'? elementPadding : elementPadding - 14,
+        elementPadding,
         logoDimensions[currentLogo]['w'],
         logoDimensions[currentLogo]['h']
     );
@@ -197,7 +197,7 @@ var renderCanvas = function() {
     ctx.textBaseline = 'bottom';
     ctx.textAlign = 'left';
     ctx.fillStyle = currentTextColor;
-    ctx.font = 'normal 20pt "Gotham SSm"';
+    ctx.font = 'normal 16pt "tablet-gothic-narrow"';
 
     if (currentTextColor === 'white') {
         ctx.shadowColor = 'rgba(0,0,0,0.7)';
@@ -224,6 +224,8 @@ var renderCanvas = function() {
 * Build the proper format for the credit based on current copyright
 */
 var buildCreditString = function() {
+    return $photographer.val();
+/*
     var creditString;
     var val = $copyrightHolder.val();
 
@@ -266,7 +268,7 @@ var buildCreditString = function() {
         }
     }
 
-    return creditString;
+    return creditString;*/
 }
 
 
@@ -464,7 +466,7 @@ var onSaveClick = function(e) {
         imageFilename = filename[filename.length - 1].split('.')[0];
     }
 
-    link.download =  'twitterbug-' + imageFilename + '.png';
+    link.download =  'waterbug-' + imageFilename + '.png';
 
     /// convert canvas content to data-uri for link. When download
     /// attribute is set the content pointed to by link will be
@@ -534,9 +536,16 @@ var onCropChange = function() {
     renderCanvas();
 }
 
+var onCreditChanged = function () {
+    currentCopyright = $photographer.val();
+
+    renderCanvas();
+}
+
 /*
 * Show the appropriate fields based on the chosen copyright
 */
+/*
 var onCopyrightChange = function() {
     currentCopyright = $copyrightHolder.val();
     $photographer.parents('.form-group').removeClass('has-warning');
@@ -568,6 +577,6 @@ var onCopyrightChange = function() {
     }
 
     renderCanvas();
-}
+}*/
 
 $(onDocumentLoad);

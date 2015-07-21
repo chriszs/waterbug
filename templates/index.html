@@ -3,10 +3,12 @@
 {% block header_content %}
 <header>
     <div class="header-wrapper">
+    <!--
         <a class="toolkit-link" href="http://tools.apps.npr.org">
             <span class="logo"><img src="http://media.npr.org/chrome/news/nprlogo_138x46.gif" alt="NPR" /></span>
             Newsroom Toolkit
         </a>
+    -->
         <h1>{{ COPY.content.project_name }}</h1>
     </div>
 </header>
@@ -48,6 +50,7 @@
                 </div>
             </div>
 
+            <!--
             <div class="form-group">
                 <h6 class="control-label">Copyright Holder <span class="required is-visible">(Required)</span></h6>
 
@@ -60,16 +63,22 @@
                   <option value="third-party">Third-Party/Courtesy</option>
                 </select>
             </div>
+            -->
 
-            <div class="form-group" style="display: none;">
-                <label class="control-label">Photographer <span class="required">(Required)</span></label>
+            <div class="form-group">
+                <label class="control-label">Credit (required) <span class="required">(Required)</span></label>
                 <input type="text" class="form-control" id="photographer" name="photographer">
             </div>
 
+            <p class="sample-credit">Example: J. Scott Applewhite/AP</p>
+
+
+            <!--
             <div class="form-group" style="display: none;">
                 <label class="control-label">Source <span class="required">(Required)</span></label>
                 <input type="text" class="form-control" id="source" name="source">
             </div>
+            -->
 
             <div class="row">
                 <div class="form-group hidden-xs hidden-sm col-lg-6">
@@ -92,12 +101,12 @@
 
                     <div class="btn-group btn-group-justified btn-group-sm" data-toggle="buttons">
                       <label class="btn btn-primary active">
-                        <input type="radio" name="logo" id="npr" value="npr" checked>
-                        NPR
+                        <input type="radio" name="logo" id="cpi" value="cpi" checked>
+                        CPI
                       </label>
                       <label class="btn btn-primary">
-                        <input type="radio" name="logo" id="music" value="music">
-                        NPR Music
+                        <input type="radio" name="logo" id="icij" value="icij">
+                        ICIJ
                       </label>
                     </div>
                 </div>
@@ -108,11 +117,11 @@
                     <div class="btn-group btn-group-justified btn-group-sm" data-toggle="buttons">
                       <label class="btn btn-primary active">
                         <input type="radio" name="logoColor" id="whiteLogo" value="white" checked>
-                        White
+                        Standard
                       </label>
                       <label class="btn btn-primary">
                         <input type="radio" name="logoColor" id="blackLogo" value="black">
-                        Black
+                        Grayscale
                       </label>
                     </div>
                 </div>
@@ -130,6 +139,7 @@
                     </div>
                 </div>
             </div>
+            <!--
             <div class="form-group">
                 <h6 class="form-header">Sharing Guidelines</h6>
                 <ul class="guidelines">
@@ -140,13 +150,13 @@
                     <li>NPR, freelancer, third party/courtesy photos, PR, Flickr Creative Commons and public domain images are fine to share, just include correct attribution</li>
                 </ul>
             </div>
+            -->
 
             <div class="form-group">
                 <p class="help-text visible-xs">To use the image on iOS, tap save to open the watermarked image in a new tab, then long tap the image and select “Save Image” to save the image to your camera roll.</p>
                 <button class="btn btn-primary btn-lg btn-block save-btn" download="download.png" disabled>Save</button>
             </div>
 
-            <p class="sample-credit">Sample image: <a href="https://www.flickr.com/photos/albaraa/7837157812/in/photolist-cWxtYy-fd7sCV-jXK9kw-h2uume-6Vvw1D-9y9KuU-aaTrae-aND34a-7vCfq5-7Fihq9-gCVuVC-4EfCSF-nxVJGT-h2u4Fm-6Rqu9g-aE44a1-dgNZb2-czXySQ-4TF4Mv-8sCrCz-6RHSzX-h2uH1m-6nNG28-aGCMUM-3cgGWd-fd7sZ8-bT696M-h2uH7q-h2roVm-4DxZuy-d254yU-fmVVxa-73Pjgh-fdmK2C-hRzCmf-6Rux4S-phyN4p-p15nDN-arGkAi-85AGFh-d254os-7qjsgt-nQqsTR-fd7vPF-e91zyU-6nnyJr-pK8vLC-pK5kbJ-7qomAQ-8B1prK">Belal Khan/Flickr</a></p>
         </form>
     </div>
 </div>
